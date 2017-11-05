@@ -1,0 +1,61 @@
+domain::name: &id_domain_name
+  virtual
+domain::network: &id_domain_network
+  10.10.100.0
+domain::prefix: &id_domain_prefix
+  24
+domain::subnet: &id_domain_subnet
+  255.255.255.0
+domain::ptr: &id_domain_ptr
+  100.10.10
+domain::nodes: &id_nodes
+  - host: k4k
+    ip: 10.10.100.1
+    ip_router: &id_dhcpd_router_ip
+      10.10.100.1
+    ip_dns: &id_dns_server_ip
+      10.10.100.1
+    ip_puppet: &id_puppet_server_ip
+      10.10.100.1
+    mac: 52:54:00:98:fb:15
+  - host: onecent
+    ip: 10.10.100.21
+    mac: 52:54:00:46:63:c7
+  - host: twocents
+    ip: 10.10.100.22
+    mac: 52:54:00:4b:d7:d5
+domain::puppet_ip: 10.10.100.1
+domain::users: &id_domain_users
+  - username: kevin
+    comment: Kevin Ashcraft
+    groups:
+      - wheel
+    password: '$1$xUpzU/Wi$IcNKWpMctcsr2nPQ8hXB21'
+domain::groups: &id_domain_groups
+  - wheel
+
+named::forwarders: 8.8.8.8; 8.8.4.4;
+named::server_ip: *id_dns_server_ip
+named::nodes: *id_nodes
+named::domains:
+  - name: *id_domain_name
+    ptr: *id_domain_ptr
+named::puppet_ip: *id_puppet_server_ip
+
+dhcpd::domain_name: *id_domain_name
+dhcpd::network: *id_domain_network
+dhcpd::range: 10.10.100.100 10.10.100.199
+dhcpd::subnet: *id_domain_subnet
+dhcpd::router: *id_dhcpd_router_ip
+dhcpd::dns_servers: *id_dns_server_ip
+dhcpd::time_offset: -18000
+dhcpd::eth_device: virbr0
+
+dhcpd::nodes: *id_nodes
+
+linux::users_global: *id_domain_users
+linux::users: []
+linux::groups_global: *id_domain_groups
+linux::groups: []
+linux::nameserver: *id_dns_server_ip
+linux::domain_name: *id_domain_name
