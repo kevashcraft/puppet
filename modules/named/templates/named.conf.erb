@@ -1,0 +1,59 @@
+acl trusted {
+<% @nodes.each do |node| -%>
+  <%= node['ip'] %>;
+<% end -%>
+};
+
+options {
+    directory "/var/named";
+    pid-file "/run/named/named.pid";
+
+    listen-on { <%= @server_ip %>; };
+
+    forwarders { <%= @forwarders %> };
+
+    allow-recursion { trusted; };
+    allow-transfer { none; };
+    allow-update { none; };
+
+    version none;
+    hostname none;
+    server-id none;
+};
+
+zone "localhost" IN {
+    type master;
+    file "localhost.zone";
+};
+
+zone "0.0.127.in-addr.arpa" IN {
+    type master;
+    file "127.0.0.zone";
+};
+
+zone "255.in-addr.arpa" IN {
+    type master;
+    file "empty.zone";
+};
+
+zone "0.in-addr.arpa" IN {
+    type master;
+    file "empty.zone";
+};
+
+zone "." IN {
+    type hint;
+    file "root.hint";
+};
+
+<% @domains.each do |domain| -%>
+zone "<%= domain['name'] %>" IN {
+    type master;
+    file "<%= domain['name'] %>.zone";
+};
+
+zone "<%= domain['ptr'] %>.in-addr.arpa" IN {
+    type master;
+    file "<%= domain['ptr'] %>.zone";
+};
+<% end -%>

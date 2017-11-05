@@ -1,0 +1,13 @@
+$TTL 7200
+@       IN      SOA     ns1.<%= @domain['name'] %>. postmaster.<%= @domain['name'] %>. (
+                                        2007011601 ; Serial
+                                        28800      ; Refresh
+                                        1800       ; Retry
+                                        604800     ; Expire - 1 week
+                                        86400 )    ; Minimum
+               IN      NS      ns1.<%= @domain['name'] %>.
+ns1            IN      A       <%= @server_ip %>
+puppet         IN      A       <%= @puppet_ip %>
+<%- @nodes.each do |node| -%>
+<%= node['host'] %>        IN          A       <%= node['ip'] %>
+<%- end -%>
