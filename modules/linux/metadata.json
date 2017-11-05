@@ -1,0 +1,18 @@
+{
+  "name": "kevashcraft-linux",
+  "version": "0.1.0",
+  "author": "Kevin Ashcraft",
+  "summary": "Kevin's Puppet Module for maintaining Linux packages, services, and users.",
+  "license": "MIT",
+  "source": "https://github.com/kevashcraft/puppet",
+  "project_page": "https://github.com/kevashcraft/puppet",
+  "issues_url": "https://github.com/kevashcraft/puppet/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 1.0.0"
+    }
+  ],
+  "data_provider": null
+}
+
