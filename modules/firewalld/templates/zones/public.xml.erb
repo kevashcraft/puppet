@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<zone>
+  <short>Public</short>
+  <description>For use in public areas. You do not trust the other computers on networks to not harm your computer. Only selected incoming connections are accepted.</description>
+<% @fw_services.each do |service| -%>
+  <service name="<%= service -%>"/>
+<% end -%>
+
+<% @fw_ports.each do |port| -%>
+  <port port="<%= port['port'] -%>" protocol="<%= port['protocol'] -%>"/>
+<% end -%>
+
+<% @fw_rules.each do |rule| -%>
+  <rule family="ipv4">
+    <source address="<%= rule['address'] -%>"/>
+<% if rule['service'] -%>
+    <service name="<%= rule['service'] -%>"/>
+<% elsif rule['port'] -%>
+    <port protocol="<%= rule['protocol'] -%>" port="<%= rule['port'] -%>" />
+<% end -%>
+    <accept />
+  </rule>
+
+<% end -%>
+</zone>
