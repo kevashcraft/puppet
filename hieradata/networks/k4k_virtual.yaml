@@ -1,0 +1,33 @@
+---
+global::domain: &k4k_global_domain
+  virtual.k4k.ha.kevashcraft.com
+global::nodes: &k4k_global_nodes
+  - host: www
+    ip: 165.227.178.26
+  - host: maint
+    ip: 45.55.32.30
+  - host: k4k
+    ip: 10.10.100.1
+    ip_puppet: &k4k_puppet_ip
+      10.10.100.1
+    ip_dns: &k4k_dns_ip
+      10.10.100.1
+
+linux::search_domains: virtual.k4k.ha.kevashcraft.com kevashcraft.com
+linux::nodes: *k4k_global_nodes
+named::nodes: *k4k_global_nodes
+named::puppet_ip: *k4k_puppet_ip
+named::server_ip: 10.10.100.1
+named::listen_on: 127.0.0.1; 10.10.100.1; 10.10.10.10
+
+linux::nameserver: *k4k_dns_ip
+
+dhcpd::dns_servers: *k4k_dns_ip
+dhcpd::domain_name: *k4k_global_domain
+dhcpd::network: 10.10.100.0
+dhcpd::subnet: 255.255.255.0
+dhcpd::router: 10.10.100.1
+dhcpd::range: 10.10.100.200 10.10.100.250
+dhcpd::nodes: *k4k_global_nodes
+dhcpd::time_offset: -18000
+dhcpd::eth_device: virbr0

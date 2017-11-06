@@ -1,0 +1,6 @@
+firewalld::services:
+  - sshd
+  - dhcp
+firewalld::ports:
+  - port: 8140
+    protocol: tcp

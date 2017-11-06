@@ -1,0 +1,3 @@
+firewalld::rules:
+  - address: 173.170.139.88
+    service: ssh

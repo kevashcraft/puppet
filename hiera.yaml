@@ -1,6 +1,12 @@
 ---
 version: 5
 hierarchy:
+  - name: Operating System
+    path: "os/%{puppet_os}.yaml"
+  - name: Network
+    path: "networks/%{puppet_network}.yaml"
+  - name: Node
+    path: "nodes/%{trusted.certname}.yaml"
   - name: Common
     path: common.yaml
 defaults:
