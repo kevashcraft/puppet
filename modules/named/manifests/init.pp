@@ -10,7 +10,10 @@
 #   The IP addresses used for forwarding unknown DNS requests, configured in /etc/named.conf.
 #
 # * `$server_ip`
-#   The IP addressed used for serving DNS requests, configured in /etc/named.conf.
+#   The IP addressed used for the ns1 entry, configured in /var/named/{{ zone file }}.
+#
+# * `$listen_on`
+#   The IP addresses used for serving DNS requests, configured in /etc/named.conf.
 #
 # * `$domains`
 #   The domains used to create the zone files, configured in /etc/named.conf and /var/named/{{ zone file }}.
@@ -40,10 +43,11 @@
 # Copyright 2017 Kevin Ashcraft MIT License
 #
 class named (
+  $domain,
+  $nodes,
   $forwarders,
   $server_ip,
-  $domains,
-  $nodes,
+  $listen_on,
   $puppet_ip,
   ) {
 
@@ -64,10 +68,8 @@ class named (
     notify  => Service['named'],
   }
 
-  $domains.each |$domain| {
-    file { "/var/named/${domain['name']}.zone":
-      content => template('named/domain.zone.erb'),
-      notify  => Service['named'],
-    }
+  file { "/var/named/${domain}.zone":
+    content => template('named/domain.zone.erb'),
+    notify  => Service['named'],
   }
 }

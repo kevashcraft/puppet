@@ -8,7 +8,7 @@ options {
     directory "/var/named";
     pid-file "/run/named/named.pid";
 
-    listen-on { <%= @server_ip %>; };
+    listen-on { <%= @listen_on %>; };
 
     forwarders { <%= @forwarders %> };
 
@@ -21,39 +21,7 @@ options {
     server-id none;
 };
 
-zone "localhost" IN {
+zone "<%= @domain %>" IN {
     type master;
-    file "localhost.zone";
+    file "<%= @domain %>.zone";
 };
-
-zone "0.0.127.in-addr.arpa" IN {
-    type master;
-    file "127.0.0.zone";
-};
-
-zone "255.in-addr.arpa" IN {
-    type master;
-    file "empty.zone";
-};
-
-zone "0.in-addr.arpa" IN {
-    type master;
-    file "empty.zone";
-};
-
-zone "." IN {
-    type hint;
-    file "root.hint";
-};
-
-<% @domains.each do |domain| -%>
-zone "<%= domain['name'] %>" IN {
-    type master;
-    file "<%= domain['name'] %>.zone";
-};
-
-zone "<%= domain['ptr'] %>.in-addr.arpa" IN {
-    type master;
-    file "<%= domain['ptr'] %>.zone";
-};
-<% end -%>
