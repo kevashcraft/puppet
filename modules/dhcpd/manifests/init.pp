@@ -81,7 +81,7 @@ class dhcpd (
     enable     => true,
     hasrestart => true,
     hasstatus  => true,
-    require    => File['Z/etc/systemd/system/dhcpd4@.service'],
+    require    => File['/etc/systemd/system/dhcpd4@.service'],
   }
 
   file { '/etc/dhcpd.conf':
