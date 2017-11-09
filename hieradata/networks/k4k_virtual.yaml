@@ -4,6 +4,9 @@ global::domain: &k4k_global_domain
 global::nodes: &k4k_global_nodes
   - host: www
     ip: 165.227.178.26
+    float_ip: 45.55.127.133
+    bind_ip: 10.17.0.7
+    primary_ip: 165.227.178.26
   - host: maint
     ip: 45.55.32.30
   - host: k4k

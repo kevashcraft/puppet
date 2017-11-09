@@ -47,6 +47,10 @@ firewalld::services: []
 firewalld::ports: []
 firewalld::rules: []
 
+httpd::sites: []
+httpd::admin_email: webmaster@kevashcraft.com
+httpd::docroot: /srv
+
 linux::search_domains: *global_domain
 linux::nodes: *global_nodes
 linux::root_pw: *global_root_pw
@@ -59,6 +63,7 @@ linux::services: []
 linux::global_packages: *global_packages
 linux::global_services: *global_services
 linux::nameserver: *dns_ip
+httpd::maint_user: kevin
 
 named::forwarders: *global_forwarders
 named::server_ip: *dns_ip

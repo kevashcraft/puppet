@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Global common.yaml configuration.
 - Facts.
 - Sshd module.
+- Httpd module.
 - Firewalld module.
 
 ## [0.1.0] - 2017-11-05

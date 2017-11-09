@@ -1,0 +1,67 @@
+<VirtualHost <%= @server_ip %>:80>
+  ServerName <%= @site['domain'] %>
+  <%- @site['aliases'].each do |ali| %>
+  ServerAlias <%= ali %>
+  <%- end %>
+
+  <%- if @site['ssl'] -%>
+  RewriteEngine on
+  RewriteRule (.*) https://<%= @site['domain'] %>$1 [R,L]
+  <%- else -%>
+  DocumentRoot <%= @site['docroot'] %>
+
+  <Directory />
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride All
+    DirectoryIndex index.html
+    Require all granted
+  </Directory>
+  <%- end -%>
+</VirtualHost>
+<%# SSL Configuration-%>
+<% if @site['ssl'] -%>
+<VirtualHost <%= @server_ip %>:443>
+  ServerName <%= @site['domain'] %>
+  <%- @site['aliases'].each do |ali| %>
+  ServerAlias <%= ali %>
+  <%- end %>
+
+  # RewriteEngine on
+  # RewriteRule (.*) https://www.kevashcraft.com$1 [R,L]
+
+  DocumentRoot <%= @site['docroot'] %>
+
+  <Directory />
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride All
+    DirectoryIndex index.html
+    Require all granted
+  </Directory>
+
+  <IfModule mod_deflate.c>
+    <IfModule mod_filter.c>
+      # these are known to be safe with MSIE 6
+      AddOutputFilterByType DEFLATE text/html text/plain text/xml
+
+      # everything else may cause problems with MSIE 6
+      AddOutputFilterByType DEFLATE text/css
+      AddOutputFilterByType DEFLATE application/x-javascript application/javascript application/ecmascript
+      AddOutputFilterByType DEFLATE application/rss+xml
+      AddOutputFilterByType DEFLATE application/xml
+    </IfModule>
+  </IfModule>
+
+  <FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
+    Header set Cache-Control "max-age=604800, public"
+  </FilesMatch>
+
+  SSLEngine on
+  SSLCertificateFile      /etc/letsencrypt/live/<%= @site['ssl'] -%>/cert.pem
+  SSLCertificateChainFile /etc/letsencrypt/live/<%= @site['ssl'] -%>/chain.pem
+  SSLCertificateKeyFile   /etc/letsencrypt/live/<%= @site['ssl'] -%>/privkey.pem
+  SSLCACertificateFile    /etc/letsencrypt/live/<%= @site['ssl'] -%>/fullchain.pem
+  # HSTS (mod_headers is required) (15768000 seconds = 6 months)
+  Header always set Strict-Transport-Security "max-age=15768000"
+</VirtualHost>
+<%- end -%>
+

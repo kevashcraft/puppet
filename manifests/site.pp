@@ -7,6 +7,7 @@ node 'k4k.ha.kevashcraft.com' {
   include dhcpd
   include named
   include firewalld
+  include httpd
 }
 
 node 'maint.kevashcraft.com' {
@@ -14,4 +15,11 @@ node 'maint.kevashcraft.com' {
   include named
   include firewalld
   include sshd
+}
+
+node 'www.kevashcraft.com' {
+  include linux
+  include sshd
+  include firewalld
+  include httpd
 }

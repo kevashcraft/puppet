@@ -1,6 +1,12 @@
 firewalld::services:
-  - sshd
-  - dhcp
+  - ssh
 firewalld::ports:
   - port: 8140
     protocol: tcp
+
+httpd::docroot: /srv/http
+httpd::sites:
+  - domain: dev.www.kevashcraft.com
+    aliases:
+      - kevashcraft.com
+    docroot: /srv/http/kevashcraft.com/www/dist

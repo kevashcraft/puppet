@@ -43,6 +43,8 @@ class sshd (
 
   $server_ip = $::puppet_public_ip
 
+  $osfamily = $::osfamily
+
   case $::osfamily {
     'archlinux': {
       $openssh = 'openssh'
