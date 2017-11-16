@@ -5,7 +5,7 @@ AddDefaultCharset UTF-8
 
 ServerRoot "/etc/httpd"
 
-Listen <%= @server_ip %>:80
+Listen <%= @listen_on %>:80
 
 <%- if @osfamily == 'Archlinux' -%>
 LoadModule authn_file_module modules/mod_authn_file.so

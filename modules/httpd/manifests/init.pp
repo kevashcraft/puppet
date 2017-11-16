@@ -32,15 +32,8 @@ class httpd (
   $admin_email,
   $maint_user,
   $docroot,
+  $listen_on,
   ) {
-
-  $bind_ip = $::puppet_bind_ip
-
-  if $bind_ip {
-    $server_ip = $bind_ip
-  } else {
-    $server_ip = $::puppet_public_ip
-  }
 
   case $::osfamily {
     'Archlinux': {
