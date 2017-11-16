@@ -6,12 +6,11 @@ $TTL 7200
                                         604800     ; Expire - 1 week
                                         86400 )    ; Minimum
                IN      NS      ns1.<%= @domain %>.
-<%= @domain %>.   IN      MX      5 alt2.aspmx.l.google.com.
-<%= @domain %>.   IN      MX      10 alt3.aspmx.l.google.com.
-<%= @domain %>.   IN      MX      5 alt1.aspmx.l.google.com.
-<%= @domain %>.   IN      MX      1 aspmx.l.google.com.
-<%= @domain %>.   IN      MX      10 alt4.aspmx.l.google.com.
-
+               IN      MX      5 alt2.aspmx.l.google.com.
+               IN      MX      10 alt3.aspmx.l.google.com.
+               IN      MX      5 alt1.aspmx.l.google.com.
+               IN      MX      1 aspmx.l.google.com.
+               IN      MX      10 alt4.aspmx.l.google.com.
 ns1            IN      A       <%= @server_ip %>
 puppet         IN      A       <%= @puppet_ip %>
 <%- @nodes.each do |node| -%>
