@@ -1,5 +1,6 @@
-linux::namserver: 127.0.0.1
-named::server_ip: 10.132.83.54; 127.0.0.1
+linux::nameserver: 127.0.0.1
+named::server_ip: 10.132.83.54
+named::listen_on: 10.132.83.54; 127.0.0.1
 
 firewalld::rules:
   # ha
