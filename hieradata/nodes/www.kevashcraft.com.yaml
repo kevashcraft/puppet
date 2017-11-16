@@ -27,7 +27,7 @@ httpd::sites:
   - domain: www.km4fpa.com
     aliases:
       - km4fpa.com
-    docroot: /srv/km4fpa.com
+    docroot: /srv/km4fpa.com/_site
     ssl: km4fpa.com
   # sudo letsencrypt certonly --standalone -d km4fpa.com -d www.km4fpa.com
 
