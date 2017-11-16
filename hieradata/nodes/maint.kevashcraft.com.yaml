@@ -4,7 +4,7 @@ named::listen_on: 10.132.83.54; 127.0.0.1
 
 firewalld::rules:
   # ha
-  - address: 10.132.33.130
+  - address: 173.170.139.88
     service: ssh
   # www
   - address: 10.132.33.130
