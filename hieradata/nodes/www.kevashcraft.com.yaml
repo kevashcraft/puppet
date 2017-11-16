@@ -25,7 +25,8 @@ httpd::sites:
     ssl: kevashcraft.com
   # sudo letsencrypt certonly --standalone -d kevashcraft.com -d www.kevashcraft.com -d blog.kevashcraft.com -d tutorials.kevashcraft.com -d hire.kevashcraft.com
   - domain: www.km4fpa.com
-    aliases: kevashcraft.com
+    aliases:
+      - km4fpa.com
     docroot: /srv/km4fpa.com
     ssl: km4fpa.com
   # sudo letsencrypt certonly --standalone -d km4fpa.com -d www.km4fpa.com
