@@ -41,7 +41,7 @@ class httpd (
       $httpd_user = 'http'
       $letsencrypt = 'certbot'
     }
-    'redhat': {
+    'RedHat': {
       $httpd = 'httpd'
       $httpd_user = 'apache'
       $letsencrypt = 'certbot'
