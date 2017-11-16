@@ -1,4 +1,5 @@
 acl trusted {
+  127.0.0.1;
 <% @nodes.each do |node| -%>
   <%= node['ip'] %>;
 <% end -%>

@@ -1,4 +1,4 @@
-named::server_ip: 10.132.83.54
+named::server_ip: 10.132.83.54; 127.0.0.1
 
 firewalld::rules:
   # ha
