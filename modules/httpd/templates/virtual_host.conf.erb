@@ -1,4 +1,4 @@
-<VirtualHost <%= @server_ip %>:80>
+<VirtualHost <%= @listen_on %>:80>
   ServerName <%= @site['domain'] %>
   <%- @site['aliases'].each do |ali| %>
   ServerAlias <%= ali %>
@@ -20,7 +20,7 @@
 </VirtualHost>
 <%# SSL Configuration-%>
 <% if @site['ssl'] -%>
-<VirtualHost <%= @server_ip %>:443>
+<VirtualHost <%= @listen_on %>:443>
   ServerName <%= @site['domain'] %>
   <%- @site['aliases'].each do |ali| %>
   ServerAlias <%= ali %>
@@ -64,4 +64,3 @@
   Header always set Strict-Transport-Security "max-age=15768000"
 </VirtualHost>
 <%- end -%>
-
