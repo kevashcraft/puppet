@@ -8,6 +8,7 @@ global::nodes: &global_nodes
     ip_query: 10.132.33.130
   - host: maint
     ip: 45.55.32.30
+    ip_private: 10.132.83.54
     ip_dns: &dns_ip
       10.132.83.54
     ip_puppet: &puppet_ip

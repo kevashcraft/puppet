@@ -10,4 +10,7 @@ ns1            IN      A       <%= @server_ip %>
 puppet         IN      A       <%= @puppet_ip %>
 <%- @nodes.each do |node| -%>
 <%= node['host'] %>        IN          A       <%= node['ip'] %>
+<%- if node['ip_private'] %>
+<%= node['host'] %>.private        IN          A       <%= node['ip_private'] %>
+<%- end %>
 <%- end -%>
