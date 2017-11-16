@@ -9,6 +9,16 @@ httpd::sites:
     docroot: /srv/kevashcraft.com/www/dist
     ssl: kevashcraft.com
     # sudo letsencrypt certonly --standalone -d kevashcraft.com -d www.kevashcraft.com -d blog.kevashcraft.com -d tutorials.kevashcraft.com -d hire.kevashcraft.com
+  - domain: blog.kevashcraft.com
+  aliases: []
+  docroot: /srv/kevashcraft.com/blog/dist
+  ssl: kevashcraft.com
+  # sudo letsencrypt certonly --standalone -d kevashcraft.com -d www.kevashcraft.com -d blog.kevashcraft.com -d tutorials.kevashcraft.com -d hire.kevashcraft.com
+  - domain: tutorials.kevashcraft.com
+  aliases: []
+  docroot: /srv/kevashcraft.com/tutorials/dist
+  ssl: kevashcraft.com
+  # sudo letsencrypt certonly --standalone -d kevashcraft.com -d www.kevashcraft.com -d blog.kevashcraft.com -d tutorials.kevashcraft.com -d hire.kevashcraft.com
 
 linux::packages:
   - npm
