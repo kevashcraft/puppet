@@ -15,6 +15,7 @@ global::nodes: &global_nodes
     ip_query: 127.0.0.1
   - host: ha
     ip: 173.170.139.88
+    ip_query: 173.170.139.88
 global::users: &global_users
   - username: kevin
     comment: Kevin Ashcraft
