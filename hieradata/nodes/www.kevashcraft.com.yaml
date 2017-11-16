@@ -6,7 +6,7 @@ firewalld::rules:
   service: ssh
 
 
-
+httpd::listen_on: 10.17.0.7
 httpd::sites:
   - domain: www.kevashcraft.com
     aliases:
