@@ -1,5 +1,14 @@
-named::server_ip: 45.55.32.30
+named::server_ip: 10.132.83.54
 
-firewalld::services:
-  - ssh
-  - dns
+firewalld::rules:
+  - address: 10.132.33.130
+    service: ssh
+  - address: 10.132.33.130
+    service: dns
+  - address: 10.132.33.130
+    port: 8140
+    protocol: tcp
+
+sshd::server_ips:
+  - 45.55.32.30
+  - 10.132.83.54

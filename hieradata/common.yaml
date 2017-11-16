@@ -3,14 +3,16 @@ global::domain: &global_domain
 global::nodes: &global_nodes
   - host: www
     ip: 165.227.178.26
+    ip_private: 10.132.33.130
+    ip_bind: 10.17.0.7
   - host: maint
     ip: 45.55.32.30
     ip_dns: &dns_ip
-      45.55.32.30
+      10.132.83.54
+    ip_puppet: &puppet_ip
+      10.132.83.54
   - host: ha
     ip: 173.170.139.88
-    ip_puppet: &puppet_ip
-      173.170.139.88
 global::users: &global_users
   - username: kevin
     comment: Kevin Ashcraft

@@ -15,6 +15,9 @@
 # * `$global_users`
 #   The global list of users to allow SSH access.
 #
+# * `$server_ip`
+#   The ip address to listen on for sshd connections.
+#
 # Examples
 # --------
 #
@@ -37,11 +40,10 @@ class sshd (
   $port,
   $users,
   $global_users,
+  $server_ips,
   ) {
 
   $ssh_users = $global_users + $users
-
-  $server_ip = $::puppet_public_ip
 
   $osfamily = $::osfamily
 
