@@ -15,12 +15,14 @@ httpd::sites:
     ssl: kevashcraft.com
     # sudo letsencrypt certonly --standalone -d kevashcraft.com -d www.kevashcraft.com -d blog.kevashcraft.com -d tutorials.kevashcraft.com -d hire.kevashcraft.com
   - domain: blog.kevashcraft.com
-    aliases: []
+    aliases:
+      - www.blog.kevashcraft.com
     docroot: /srv/kevashcraft.com/blog/dist
     ssl: kevashcraft.com
   # sudo letsencrypt certonly --standalone -d kevashcraft.com -d www.kevashcraft.com -d blog.kevashcraft.com -d tutorials.kevashcraft.com -d hire.kevashcraft.com
   - domain: tutorials.kevashcraft.com
-    aliases: []
+    aliases:
+      - www.tutorials.kevashcraft.com
     docroot: /srv/kevashcraft.com/tutorials/dist
     ssl: kevashcraft.com
   # sudo letsencrypt certonly --standalone -d kevashcraft.com -d www.kevashcraft.com -d blog.kevashcraft.com -d tutorials.kevashcraft.com -d hire.kevashcraft.com

@@ -33,6 +33,10 @@
   <%- if @site['ssl'] -%>
   redirect / https://<%= @site['domain'] %>
   <%- else -%>
+  RewriteEngine on
+  RewriteCond %{REQUEST_URI}% /index\.html$
+  RewriteRule (.*?)(index\.html)?$ http://<%= @site['domain'] %>$1 [NE,R=301,L]
+
   DocumentRoot <%= @site['docroot'] %>
 
   <Directory />
@@ -47,6 +51,10 @@
 <% if @site['ssl'] -%>
 <VirtualHost <%= @listen_on %>:443>
   ServerName <%= @site['domain'] %>
+
+  RewriteEngine on
+  RewriteCond %{REQUEST_URI}% /index\.html$
+  RewriteRule (.*?)(index\.html)?$ https://<%= @site['domain'] %>$1 [NE,R=301,L]
 
   DocumentRoot <%= @site['docroot'] %>
 
