@@ -17,7 +17,7 @@ global::nodes: &global_nodes
   - host: dev
     ip: 45.55.128.46
     ip_private: 10.132.29.38
-    ip_query: 10.132.33.130
+    ip_query: 45.55.128.46
   - host: ha
     ip: 173.170.139.88
     ip_query: 173.170.139.88
