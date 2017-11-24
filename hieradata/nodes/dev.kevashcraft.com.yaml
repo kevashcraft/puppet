@@ -9,4 +9,4 @@ linux::packages:
   - npm
 
 sshd::server_ips:
-- 10.132.29.38
+  - 10.132.29.38

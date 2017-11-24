@@ -5,7 +5,6 @@ firewalld::rules:
 - address: 10.132.83.54
   service: ssh
 
-
 httpd::listen_on: 10.17.0.7
 httpd::sites:
   - domain: www.kevashcraft.com
@@ -44,4 +43,4 @@ linux::packages:
   - php
 
 sshd::server_ips:
-- 10.132.33.130
+  - 10.132.33.130
