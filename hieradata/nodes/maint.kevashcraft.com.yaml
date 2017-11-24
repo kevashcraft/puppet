@@ -16,6 +16,9 @@ firewalld::rules:
     protocol: tcp
   - address: 10.132.29.38
     service: dns
+  - address: 10.132.29.38
+    port: 8140
+    protocol: tcp
 
 sshd::server_ips:
   - 45.55.32.30
