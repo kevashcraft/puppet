@@ -1,0 +1,12 @@
+firewalld::services:
+  - http
+  - https
+firewalld::rules:
+- address: 10.132.83.54
+  service: ssh
+
+linux::packages:
+  - npm
+
+sshd::server_ips:
+- 10.132.29.38

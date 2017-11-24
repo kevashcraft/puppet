@@ -14,6 +14,9 @@ global::nodes: &global_nodes
     ip_puppet: &puppet_ip
       10.132.83.54
     ip_query: 127.0.0.1
+  - host: dev
+    ip: 45.55.128.46
+    ip_private: 10.132.29.38
   - host: ha
     ip: 173.170.139.88
     ip_query: 173.170.139.88
