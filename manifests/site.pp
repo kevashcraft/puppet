@@ -23,3 +23,8 @@ node 'www.kevashcraft.com' {
   include firewalld
   include httpd
 }
+
+node 'dev.kevashcraft.com' {
+  include linux
+  include sshd
+}
