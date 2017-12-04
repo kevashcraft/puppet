@@ -10,6 +10,8 @@ httpd::sites:
   - domain: www.kevashcraft.com
     aliases:
       - kevashcraft.com
+    rewrites:
+      - ^send-message$ contact.php [NC]
     docroot: /srv/kevashcraft.com/www/dist
     ssl: kevashcraft.com
     # sudo letsencrypt certonly --standalone -d kevashcraft.com -d www.kevashcraft.com -d blog.kevashcraft.com -d tutorials.kevashcraft.com -d hire.kevashcraft.com
