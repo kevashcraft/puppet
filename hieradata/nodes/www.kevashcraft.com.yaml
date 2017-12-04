@@ -11,7 +11,7 @@ httpd::sites:
     aliases:
       - kevashcraft.com
     rewrites:
-      - ^send-message$ contact.php [NC]
+      - ^/send-message$ contact.php [NC]
     docroot: /srv/kevashcraft.com/www/dist
     ssl: kevashcraft.com
     # sudo letsencrypt certonly --standalone -d kevashcraft.com -d www.kevashcraft.com -d blog.kevashcraft.com -d tutorials.kevashcraft.com -d hire.kevashcraft.com
@@ -30,6 +30,8 @@ httpd::sites:
   - domain: hire.kevashcraft.com
     aliases:
       - www.hire.kevashcraft.com
+    rewrites:
+      - ^/send-message$ contact.php [NC]
     docroot: /srv/kevashcraft.com/hire/dist
     ssl: kevashcraft.com
   # sudo letsencrypt certonly --standalone -d kevashcraft.com -d www.kevashcraft.com -d blog.kevashcraft.com -d tutorials.kevashcraft.com -d hire.kevashcraft.com
